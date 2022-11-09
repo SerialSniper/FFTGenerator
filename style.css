@@ -1,0 +1,163 @@
+@charset "utf-8";
+
+body {
+    background-color: #222;
+    margin: 0;
+    padding: 0;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: #BBB;
+    font-family: Arial;
+}
+
+#canvas {
+    margin: 0;
+    padding: 0;
+}
+
+#time {
+    margin-top: 10px;
+}
+
+.controls {
+    position: absolute;
+    top: 10vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.wave-selector {
+    background-color: #333;
+    display: inline-grid;
+    grid-template-columns: auto auto auto auto;
+    border-radius: 10px;
+    margin: 0 5px;
+    box-shadow: #151515 0 2px 10px;
+}
+
+.wave-selector-button {
+    padding: 10px 15px;
+    font-weight: bold;
+    cursor: pointer;
+    user-select: none;
+    transition: .2s;
+}
+
+.play-button {
+    background-color: #333;
+    display: inline-block;
+    border-radius: 10px;
+    margin: 0 5px;
+    box-shadow: #151515 0 2px 10px;
+    padding: 10px 15px;
+    font-weight: bold;
+    cursor: pointer;
+    user-select: none;
+    transition: .2s;
+}
+
+.play-button[selected] {
+    background-color: #197323;
+}
+
+.play-button:hover:not(div[selected]) {
+    background-color: #495c4b;
+    transition: .2s;
+}
+
+.wave-selector-button:first-child {
+    border-radius: 10px 0 0 10px;
+}
+
+.wave-selector-button:last-child {
+    border-radius: 0 10px 10px 0;
+}
+
+.wave-selector-button[selected] {
+    background-color: #197323;
+}
+
+.wave-selector-button:hover:not(div[selected]) {
+    background-color: #495c4b;
+    transition: .2s;
+}
+
+.slider-wrapper {
+    margin-top: 10px;
+    display: flex;
+    flex-direction: column;
+}
+
+.slider {
+    -webkit-appearance: none;
+    width: 200px;
+    height: 10px;
+    border-radius: 1000px;
+    background: #333;
+    outline: none;
+    margin-top: 40px;
+    display: inline-block;
+    position: relative;
+    transition: .2s;
+}
+
+#freq {
+    width: 100%;
+}
+
+*[disabled] {
+    opacity: 30%;
+}
+
+.slider[disabled]::-webkit-slider-thumb {
+    cursor: auto;
+}
+
+.slider:before {
+    content: attr(val);
+    position: absolute;
+    top: -25px;
+    left: 0;
+    right: 0;
+    text-align: center;
+    color: #BBB;
+    font-size: 15px;
+}
+
+#freq:before {
+    content: "Frequency: " attr(val) "Hz";
+}
+
+#amp:before {
+    content: "Amplitude: " attr(val) "V";
+}
+
+#offset:before {
+    content: "DC offset: " attr(val) "V";
+}
+
+#duty:before {
+    content: "Duty cycle: " attr(val) "%";
+}
+
+.slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 20px;
+    height: 20px;
+    border-radius: 1000px;
+    background: #197323;
+    cursor: pointer;
+    transition: .2s;
+}
+
+.slider::-webkit-slider-thumb:hover {
+    box-shadow: #151515 0 2px 10px;
+    transition: .2s;
+}
